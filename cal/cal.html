@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css">
+    <link rel="stylesheet" href="cal.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Calendar</title>
+</head>
+<body class="flex justify-center">
+    <div id='external-events' class="hidden">
+        <p>
+            <strong>Draggable Events</strong>
+        </p>
+      
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 1</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 2</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 3</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 4</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 5</div>
+        </div>
+      
+        <p>
+            <input type='checkbox' id='drop-remove' />
+            <label for='drop-remove'>remove after drop</label>
+        </p>
+    </div>
+    <!-- MODAL BACKGROUND -->
+    <div id="modalbg" class="fixed w-full h-full bg-gray-900 opacity-40 hidden"></div>
+    <!-- SIDEBAR -->
+    <div id="sidebar" class="sticky top-0 w-64 h-screen hidden lg:flex flex-col bg-green-300">
+        <!-- LOGO -->
+        <div id="main-logo-wrap" class="w-full h-40 bg-pink-300"></div>
+        <!-- MENU OPTIONS -->
+        <a href="/dash/dash.html" class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Dashboard</a>
+        <a href="/cal/cal.html" class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Calendar</a>
+        <a href="/cl/cl.html" class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Clients</a>
+        <a class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Preferences</a>
+        <a class="mt-auto w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Log Out</a>
+        <div id="menuclose" class="hidden absolute top-2 -right-14 w-12 h-12 bg-green-800"></div>
+    </div>
+    <!-- MAIN PANEL -->
+    <div id="main" class="flex flex-col w-full max-w-4xl min-h-screen px-2 py-4 bg-green-100">
+        <div class="flex content-center pb-4">
+            <div id="menuopen" class="block lg:hidden w-9 h-9 mr-2 bg-pink-300">Menu</div>
+            <h1 class="text-3xl">Calendar</h1>
+        </div>
+        <!-- DASHBOARD CARDS -->
+        <div id='calendar-container'>
+            <div id='calendar'></div>
+        </div>
+        <div id='calendar-container2'>
+            <div id='calendar2'></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+    <script src="../common/common.js"></script>
+    <script src="cal.js"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center">
+    <!-- MODAL BACKGROUND -->
+    <div id="modalbg" class="fixed w-full h-full bg-gray-900 opacity-40 hidden"></div>
+    <!-- TEMP MODAL -->
+    <div id="tempmodal" class="fixed top-0 left-0 w-full h-full flex justify-center items-center hidden">
+        <div id="tempbox" class="w-3/4 h-3/4 p-4 bg-pink-300">
+            <div class="w-full flex">
+                <h2 id="addctxt" class="text-2xl mb-4">Add Client</h2>
+                <h2 id="clinfotxt" class="text-2xl mb-4 hidden">Client Info</h2>
+                <div id="addclclose" class="ml-auto">Close</div>
+            </div>
+            <!-- <form id="form" class="flex flex-wrap space-x-4 space-y-4">
+                <div id="lnamef" class="field ml-4">
+                    <label for="lname">Last Name</label><br>
+                    <input type="text" id="lname" name="lname" spellcheck="false">
+                </div>
+                <div id="fnamef" class="field">
+                    <label for="lname">First Name</label><br>
+                    <input type="text" id="lname" name="lname" spellcheck="false">
+                </div>
+                <div id="addressf" class="field">
+                    <label for="address">Address</label><br>
+                    <input type="text" id="address" name="address" spellcheck="false">
+                </div>
+                <div id="birthdatef" class="field">
+                    <label for="birthdate">Birthdate</label><br>
+                    <input type="text" id="birthdate" name="birthdate" value="test" spellcheck="false">
+                </div>
+                <input type="submit" id="submit" name="submit" value="Add Client"><br>
+                <a id="testbtn">testbtn</a>
+    
+            </form> -->
+            <form class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                <div id="lnamef" class="field">
+                    <label for="lname">Last Name</label><br>
+                    <input type="text" id="lname" name="lname" spellcheck="false" class="w-full">
+                </div>
+                <div id="fnamef" class="field">
+                    <label for="lname">First Name</label><br>
+                    <input type="text" id="fname" name="fname" spellcheck="false" class="w-full">
+                </div>
+                <div id="addressf" class="field">
+                    <label for="address">Address</label><br>
+                    <input type="text" id="address" name="address" spellcheck="false" class="w-full">
+                </div>
+                <div id="birthdatef" class="field">
+                    <label for="birthdate">Birthdate</label><br>
+                    <input type="text" id="birthdate" name="birthdate" spellcheck="false" class="w-full">
+                </div>
+                <div id="addbtn" class="sm:col-span-2 lg:col-span-3 flex justify-end">Add</div>
+            </form>
+        </div>
+    </div>
+    <!-- SIDEBAR -->
+    <div id="sidebar" class="sticky top-0 w-64 h-screen hidden lg:flex flex-col bg-green-300">
+        <!-- LOGO -->
+        <div id="main-logo-wrap" class="w-full h-40 bg-pink-300"></div>
+        <!-- MENU OPTIONS -->
+        <a href="/dash/dash.html" class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Dashboard</a>
+        <a href="/cal/cal.html" class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Calendar</a>
+        <a href="/cl/cl.html" class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Clients</a>
+        <a class="w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Preferences</a>
+        <a class="mt-auto w-full h-16 px-6 flex items-center text-2xl hover:bg-green-400">Log Out</a>
+        <div id="menuclose" class="hidden absolute top-2 -right-14 w-12 h-12 bg-green-800"></div>
+    </div>
+    <!-- MAIN PANEL -->
+    <div id="main" class="flex flex-col w-full max-w-4xl min-h-screen px-2 py-4 bg-green-100">
+        <div class="flex flex-col content-center pb-4">
+            <div class="flex mb-4">
+                <div id="menuopen" class="block lg:hidden w-9 h-9 mr-2 bg-pink-300">Menu</div>
+                <h1 class="text-3xl">Client List</h1>
+                <div id="deleteselected" class="ml-auto mr-12 bg-red-400">Delete Selected</div>
+                <div id="addclient" class="ml-auto mr-12 bg-yellow-400">Add Client</div>
+            </div>
+            <div id="clmodule" class="flex flex-col bg-blue-300">
+                <div id="clhead" class="flex h-12 items-center">
+                    <div id="selectall" class="w-10"><input type="checkbox" id="allclients" name="allclients" value="allclients"></div>
+                    <div id="clientnames" class="grow flex place-content-center">
+                        <div class="lname">LName</div>
+                        <div class="comma mr-1">,</div>
+                        <div class="fname">FName</div>
+                    </div>
+                    <div id="lastmeet" class="w-36">Last Meet</div>
+                </div>  
+                <div id="cllist" class="flex flex-col ">
+                    <!-- <div class="client flex h-8">
+                        <div class="selectclient w-10"><input type="checkbox"></div>
+                        <div class="clientname grow flex place-content-center">
+                            <div class="lname">LName1</div>
+                            <div class="comma mr-1">,</div>
+                            <div class="fname">FName1</div>
+                        </div>
+                        <div class="lastmeet w-36">Mmm. dd, yyyy</div>
+                    </div>
+                    <div class="client flex h-8">
+                        <div class="selectclient w-10"><input type="checkbox"></div>
+                        <div class="clientname grow flex place-content-center">
+                            <div class="lname">LName2</div>
+                            <div class="comma mr-1">,</div>
+                            <div class="fname">FName2</div>
+                        </div>
+                        <div class="lastmeet w-36">Mmm. dd, yyyy</div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <script src="../common/common.js"></script>
+    <script src="loadcl.js"></script>
+    <script src="cl.js"></script>
+</body>
+</html>
