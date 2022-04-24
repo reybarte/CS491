@@ -1,0 +1,9 @@
+.menuoption.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 35%;
+    border-left: 10px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
